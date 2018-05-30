@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <script type="text/javascript">
+      function cambiarColor(color){
+        var element = document.getElementById("etiqueta_h1");
+        element.style.color = color;
+        document.cookie = color;
+      }
+
+      function PonerColor(){
+        var element = document.getElementById("color_h1");
+        cambiarColor(element.value);
+      }
+
+    </script>
+
+  </head>
+  <body>
+    <h1 id="etiqueta_h1" style="color:red; background-color: blue">Titulo Principal</h1>
+
+    <label>Color H1</label>
+    <input id="color_h1" type="text" name="" value="">
+
+    <button type="button" name="btnCambiaColor" onclick="PonerColor()">Cambiar Color</button>
+
+    <!--
+    <button type="button" name="btnRojo" onclick="cambiarColor('red')">Rojo</button>
+    <button type="button" name="btnVerde" onclick="cambiarColor('green')">Verde</button>
+    <button type="button" name="btnAzul" onclick="cambiarColor('blue')">Azul</button>
+  -->
+  </body>
+</html>
