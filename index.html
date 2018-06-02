@@ -1,36 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+<head>
+  <meta charset="utf-8">
+  <title>Colores</title>
 
-    <script type="text/javascript">
-      function cambiarColor(color){
-        var element = document.getElementById("etiqueta_h1");
-        element.style.color = color;
-        document.cookie = color;
+  <script type="text/javascript">
+  //Almacenamos en LocalStorage
+
+  var ColorH1 ="yellow";
+  var storage = window.localStorage;
+
+  window.onload = function(){
+
+    if (typeof(storage) !== "undefined") {
+      var color = storage.getItem("color_h1");
+
+      if (typeof(color) !== "undefined"){
+        cambiarColor(color);
+      }else {
+        storage.setItem("color_h1", ColorH1);
       }
+    } else {
+      console.log("No soportado");
+    }
+  }
 
-      function PonerColor(){
-        var element = document.getElementById("color_h1");
-        cambiarColor(element.value);
-      }
+  //Funcion para cambiar color
+  function cambiarColor(color){
+    var element = document.getElementById("etiqueta_h1");
+    element.style.color = color;
+  }
+  //Funcion para poner color
 
-    </script>
+  function PonerColor(){
+    var element = document.getElementById("color_h1");
+    storage.setItem("color_h1", element.value);
+    cambiarColor(element.value);
+  }
 
-  </head>
-  <body>
-    <h1 id="etiqueta_h1" style="color:red; background-color: blue">Titulo Principal</h1>
+  </script>
 
-    <label>Color H1</label>
-    <input id="color_h1" type="text" name="" value="">
+</head>
+<body>
+  <h1 id="etiqueta_h1" style="color:red; background-color: blue">Titulo Principal</h1>
 
-    <button type="button" name="btnCambiaColor" onclick="PonerColor()">Cambiar Color</button>
+  <label>Color H1</label>
+  <input id="color_h1" type="text" name="" value="">
 
-    <!--
-    <button type="button" name="btnRojo" onclick="cambiarColor('red')">Rojo</button>
-    <button type="button" name="btnVerde" onclick="cambiarColor('green')">Verde</button>
-    <button type="button" name="btnAzul" onclick="cambiarColor('blue')">Azul</button>
-  -->
-  </body>
+  <button type="button" name="btnCambiaColor" onclick="PonerColor()">Cambiar Color</button>
+
+  <!--
+  <button type="button" name="btnRojo" onclick="cambiarColor('red')">Rojo</button>
+  <button type="button" name="btnVerde" onclick="cambiarColor('green')">Verde</button>
+  <button type="button" name="btnAzul" onclick="cambiarColor('blue')">Azul</button>
+-->
+</body>
 </html>
